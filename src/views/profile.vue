@@ -3,7 +3,7 @@ import { ref, reactive } from "vue";
 import { useDoctorStore } from "../stores/doctor"; // Update this path with your actual path
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
-
+import { useRouter } from "vue-router";
 const userStore = useDoctorStore();
 
 const doctorDetails = reactive({
@@ -13,6 +13,7 @@ const doctorDetails = reactive({
 });
 
 const updateProfile = async () => {
+  const router = useRouter();
   const userId = userStore.userId;
 
   const doctorDocRef = doc(collection(db, "doctors"), userId);
@@ -30,6 +31,10 @@ const updateProfile = async () => {
 
   // Perform both updates simultaneously
   await Promise.all([updateDoctor, updateUser]);
+
+  setTimeout(() => {
+    router.push({ name: "doctor-ui" });
+  }, 1000);
 };
 </script>
 
