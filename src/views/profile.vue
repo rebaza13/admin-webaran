@@ -5,7 +5,7 @@ import { collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useRouter } from "vue-router";
 const userStore = useDoctorStore();
-
+const router = useRouter();
 const doctorDetails = reactive({
   fullName: "",
   startTime: "",
@@ -13,7 +13,6 @@ const doctorDetails = reactive({
 });
 
 const updateProfile = async () => {
-  const router = useRouter();
   const userId = userStore.userId;
 
   const doctorDocRef = doc(collection(db, "doctors"), userId);
