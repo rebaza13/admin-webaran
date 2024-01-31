@@ -33,36 +33,13 @@
               <td class="px-6 py-4 border-b">{{ doctor.email }}</td>
               <td class="px-6 py-4 border-b">{{ doctor.expertise }}</td>
               <td @click="myemail = doctor.email" class="px-6 py-4 border-b">
-                <button class="btn" onclick="my_modal_5.showModal()">
+                <button class="btn" @click="deleteDoctor(myemail)">
                   Delete
                 </button>
 
                 <!-- Delete button -->
               </td>
-              <dialog
-                id="my_modal_5"
-                class="modal modal-bottom sm:modal-middle"
-              >
-                <div class="modal-box">
-                  <h3 class="text-lg font-bold">
-                    are you sure you want remove !
-                  </h3>
-                  <p class="py-4"></p>
 
-                  <div class="flex justify-between w-full modal-action">
-                    <button
-                      class="btn bg-violet-400 border-violet-400 hover:bg-violet-600"
-                      @click="deleteDoctor(myemail)"
-                    >
-                      Delete
-                    </button>
-                    <form method="dialog">
-                      <!-- if there is a button in form, it will close the modal -->
-                      <button class="btn">Close</button>
-                    </form>
-                  </div>
-                </div>
-              </dialog>
               <!-- Add more columns as needed -->
             </tr>
           </tbody>
